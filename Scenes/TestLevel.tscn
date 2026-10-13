@@ -1,0 +1,47 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Scenes/Player.tscn" id="1_player"]
+[ext_resource type="PackedScene" path="res://Scenes/Enemy.tscn" id="2_enemy"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_floor"]
+size = Vector2(1000, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
+size = Vector2(1000, 64)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_plat"]
+size = Vector2(200, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_plat"]
+size = Vector2(200, 32)
+
+[node name="TestLevel" type="Node2D"]
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(576, 550)
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor"]
+modulate = Color(0.25, 0.3, 0.4, 1)
+texture = SubResource("PlaceholderTexture2D_floor")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("RectangleShape2D_floor")
+
+[node name="Platform" type="StaticBody2D" parent="."]
+position = Vector2(750, 420)
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform"]
+modulate = Color(0.4, 0.55, 0.7, 1)
+texture = SubResource("PlaceholderTexture2D_plat")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+shape = SubResource("RectangleShape2D_plat")
+
+[node name="Player" parent="." instance=ExtResource("1_player")]
+position = Vector2(300, 450)
+
+[node name="Enemy" parent="." instance=ExtResource("2_enemy")]
+position = Vector2(500, 488)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 450)

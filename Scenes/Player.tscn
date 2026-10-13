@@ -1,0 +1,28 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_rpqav"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_kyqiw"]
+size = Vector2(32, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gntrk"]
+size = Vector2(32, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_attack"]
+size = Vector2(50, 40)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_rpqav")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.25, 0.65, 1.0, 1)
+texture = SubResource("PlaceholderTexture2D_kyqiw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gntrk")
+
+[node name="AttackArea" type="Area2D" parent="."]
+position = Vector2(35, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource("RectangleShape2D_attack")
